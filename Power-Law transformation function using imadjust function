@@ -1,0 +1,5 @@
+a = imread('peppers.png');
+b = imadjust(a,[],[],1.5); 
+% for example 1.5 << any num> than 1 will make it darker%
+%less than 1 brighter
+imshowpair(a,b,"montage")
