@@ -7,6 +7,20 @@ f=imfilter(a,w,'replicate');
 figure,imshowpair(a,f,'montage')
 % notice the blending effect
 
+% *** other way
+rgb=imread('peppers.png');
+r = rgb(:,:,1);
+g = rgb(:,:,2);
+b=rgb(:,:,3);
+w = fspecial('average', 3);
+fr = imfilter(r,w, 'replicate');
+fg= imfilter(g,w, 'replicate');
+fb = imfilter(b,w, 'replicate');
+filtered_rgb= cat(3,fr,fg,fb);
+figure, imshow(filtered_rgb);
+
+
+
 % ****************** filter HSI
 % convert RGB to HSI 
 h=rgb2hsv(a);
