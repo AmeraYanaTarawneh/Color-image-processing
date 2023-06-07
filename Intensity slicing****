@@ -1,0 +1,10 @@
+
+e=imread('peppers.png');
+eg = rgb2gray(e);
+imshow(e)
+% K R G B Y M C W
+my8colors = [0 0 0; 1 0 0; 0 1 0; 0 0 1; 1 1 0; 1 0 1; 0 1 1; 1 1 1];
+e8 = grayslice(eg, 8);
+figure, imshow(e8, my8colors)
+
+
