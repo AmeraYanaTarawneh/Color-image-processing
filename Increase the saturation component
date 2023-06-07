@@ -1,0 +1,6 @@
+a = imread('peppers.png');
+b = rgb2hsv(a);
+% H S I , to seperate the second component: 
+b(:, :, 2) = b(:, :, 2) + 0.4;
+c = hsv2rgb(b);
+imshowpair(a,c,"montage")
