@@ -1,3 +1,4 @@
+%*************** filter RGB
 a=imread('peppers.png');
 % avrg filter mask 5*5
 w=fspecial('average',[5 5]);
@@ -6,6 +7,7 @@ f=imfilter(a,w,'replicate');
 figure,imshowpair(a,f,'montage')
 % notice the blending effect
 
+% ****************** filter HSI
 % convert RGB to HSI 
 h=rgb2hsv(a);
 k=h; % make a copy of the img
@@ -15,3 +17,21 @@ k(:,:,3)=imfilter(h(:,:,3),w,'replicate');
 g=hsv2rgb(k);
 figure,imshowpair(f,g,'montage')
 % no blending effect
+
+% **** other way to fiter hsi
+rgb=imread('peppers.png');
+imshow(rgb);
+title('RGB image');
+h = rgb2hsv(rgb);
+% split each component
+H= h(:,:,1); 
+S= h(:,:,2); 
+I= h(:,:,3);
+
+w = fspecial('average', 3);
+% aply the filter in I
+I_filtered = imfilter(I, w, 'replicate');
+% cat: one img compose of 3 matrix
+h = cat(3, H, S, I_filtered);
+f = hsv2rgb(h);
+figure, imshow(f);
