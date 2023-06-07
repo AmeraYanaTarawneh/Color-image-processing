@@ -1,0 +1,17 @@
+a=imread('peppers.png');
+% avrg filter mask 5*5
+w=fspecial('average',[5 5]);
+% aplly the filter on the RGB
+f=imfilter(a,w,'replicate');
+figure,imshowpair(a,f,'montage')
+% notice the blending effect
+
+% convert RGB to HSI 
+h=rgb2hsv(a);
+k=h; % make a copy of the img
+% seperate the Intinsity matrix 
+k(:,:,3)=imfilter(h(:,:,3),w,'replicate');
+%now convert k back to GRB for disply
+g=hsv2rgb(k);
+figure,imshowpair(f,g,'montage')
+% no blending effect
