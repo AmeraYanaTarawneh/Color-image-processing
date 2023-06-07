@@ -1,0 +1,12 @@
+a=imread('peppers.png');
+figure,imhist(a)
+b=histeq(a);
+figure,imshow(b)
+
+
+% *********** HSI
+% convert RGB to HSI 
+h=rgb2hsv(a);
+figure,imhist(h)
+c=histeq(h);
+figure,imshow(c)
