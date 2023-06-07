@@ -1,0 +1,25 @@
+a=imread('peppers.png');
+% this is an color img which contain a 3 matrices 
+imshow(a)
+%sepatert the matrices
+r=a(:,:,1);
+g=a(:,:,2);
+b=a(:,:,3);
+% the combination of all together make color img
+% to display them all in one figure 
+subplot(2,2,1),imshow(a),title('RGB');
+subplot(2,2,2),imshow(r),title('red');
+subplot(2,2,3),imshow(g),title('green');
+subplot(2,2,4),imshow(b),title('blue');
+
+
+% to do complement img 
+c=255-a;
+figure,imshow(c)
+
+% to display only red matrix in red color
+d=a;
+d(:,:,2)=0;  %set the second matrix (green)to zero 
+d(:,:,3)=0;  %set the second matrix (green)to zero 
+figure,imshow(d)
+
